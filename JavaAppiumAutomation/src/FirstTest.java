@@ -71,9 +71,43 @@ public class FirstTest {
         );
         String search_text = search_element.getAttribute("text");
         Assert.assertEquals(
-                "We see unexpected text!",
+                "Search input supposed to have placeholder text 'Search...'. But it has text: " + search_text,
                 "Search…",
                 search_text
+        );
+    }
+    @Test
+    public void testEx3CancelSearch() {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find Search Wikipedia' input",
+                5
+        );
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text,'Search…')]"),
+                "Android",
+                "Cannot find search input",
+                5
+        );
+        waitForElementPresent(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Android Oreo']"),
+                "One of articles was not found in search results",
+                5
+        );
+        waitForElementPresent(
+                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Android Nougat']"),
+                "One of articles was not found in search results",
+                5
+        );
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find X to cancel search",
+                5
+        );
+        waitForElementNotPresent(
+                By.id("org.wikipedia:id/search_results_list"),
+                "Search results are still present on the page",
+                5
         );
     }
 
@@ -136,7 +170,6 @@ public class FirstTest {
                 article_title
         );
     }
-
 
 
     private WebElement waitForElementPresent(By by, String error_massage, long timeoutInSeconds){
