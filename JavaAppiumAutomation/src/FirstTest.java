@@ -127,15 +127,10 @@ public class FirstTest {
                 5
         );
         List <WebElement> search_results = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
+        String search_keyword = driver.findElement(By.id("org.wikipedia:id/search_src_text")).getText().toLowerCase();
         for (WebElement results_titles : search_results) {
-            String item_title = results_titles.getText();
-
-
-            Assert.assertEquals(
-                    "One of result doesn't contains search keyword",
-                    "Android",
-                    item_title
-            );
+            String item_title = results_titles.getText().toLowerCase();
+            Assert.assertTrue("Result title: " + "'" + item_title + "'" + " doesn't contains search keyword: "+ "'" + search_keyword + "'" , item_title.contains(search_keyword));
         }
         // Basic loop с отображением всех заголовков результатов переданных в List
 //        for (int i = 0; i < search_results.size(); i++) {
