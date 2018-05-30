@@ -1,5 +1,6 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import jdk.nashorn.internal.runtime.regexp.RegExpMatcher;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 public class FirstTest {
     private AppiumDriver driver;
@@ -89,16 +91,16 @@ public class FirstTest {
                 "Cannot find search input",
                 5
         );
-        waitForElementPresent(
-                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Android Oreo']"),
-                "One of articles was not found in search results",
-                5
-        );
-        waitForElementPresent(
-                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Android Nougat']"),
-                "One of articles was not found in search results",
-                5
-        );
+
+        List <WebElement> search_results = driver.findElements(By.id("org.wikipedia:id/page_list_item_container"));
+        Integer results_quantity = search_results.size();
+        Assert.assertTrue("Not enough articles in search results", results_quantity > 1);
+
+//        waitForElementPresent(
+//                By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Android Oreo']"),
+//                "One of articles was not found in search results",
+//                5
+//        );
         waitForElementAndClick(
                 By.id("org.wikipedia:id/search_close_btn"),
                 "Cannot find X to cancel search",
@@ -109,6 +111,38 @@ public class FirstTest {
                 "Search results are still present on the page",
                 5
         );
+    }
+
+    @Test
+    public void testEx4CheckSearch(){
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find Search Wikipedia' input",
+                5
+        );
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text,'Search…')]"),
+                "Android",
+                "Cannot find search input",
+                5
+        );
+        List <WebElement> search_results = driver.findElements(By.id("org.wikipedia:id/page_list_item_title"));
+        for (WebElement results_titles : search_results) {
+            String item_title = results_titles.getText();
+
+
+            Assert.assertEquals(
+                    "One of result doesn't contains search keyword",
+                    "Android",
+                    item_title
+            );
+        }
+        // Basic loop с отображением всех заголовков результатов переданных в List
+//        for (int i = 0; i < search_results.size(); i++) {
+//        WebElement results_titles = search_results.get(i);
+//        String item_title = results_titles.getText();
+//        System.out.println (item_title);
+//        }
     }
 
     @Test
