@@ -173,7 +173,7 @@ public class FirstTest {
 //                By.xpath("//android.widget.LinearLayout[@index='2']"),
                 By.xpath("//*[contains(@text,'Add to reading list')]"),
                 "Cannot find option to add article to reading list",
-                5
+                8
         );
         waitForElementAndClick(
                 By.id("org.wikipedia:id/onboarding_button"),
@@ -229,9 +229,9 @@ public class FirstTest {
                 5
         );
         waitForElementAndClick(
-                By.xpath("//*[contains(@text,'Add to reading list')]"),
+                By.xpath("//android.widget.LinearLayout[@index='2']"),
                 "Cannot find option to add article to reading list",
-                5
+                10
         );
         waitForElementAndClick(
                 By.xpath("//*[@resource-id = 'org.wikipedia:id/item_container']//*[@text='" + name_of_folder + "']"),
@@ -251,7 +251,7 @@ public class FirstTest {
         waitForElementAndClick(
                 By.xpath("//*[@text='" + name_of_folder + "']"),
                 "Cannot find created folder: '"+ name_of_folder + "'",
-                5
+                8
         );
         swipeElementToLeft(
                 By.xpath("//*[@text='Korn']"),
@@ -269,7 +269,7 @@ public class FirstTest {
         );
         waitForElementAndClick(
                 By.xpath("//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[@text = 'Linkin Park']"),
-                "Cannot find 'American rock band' topic searching by 'Linkin park'",
+                "Cannot open saved article",
                 5
         );
         waitForElementPresent(
@@ -278,7 +278,7 @@ public class FirstTest {
                 7
         );
     }
-
+    
     @Test
     public void testCancelSearch(){
         waitForElementAndClick(
