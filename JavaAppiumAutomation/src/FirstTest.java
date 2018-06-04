@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class FirstTest {
     private AppiumDriver driver;
@@ -33,6 +32,7 @@ public class FirstTest {
         capabilities.setCapability("app","E:/Dev/AutoTest/JavaAppiumAutomation/apks/org.wikipedia.apk");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+        driver.rotate(ScreenOrientation.PORTRAIT);
     }
 
     @After
@@ -170,12 +170,12 @@ public class FirstTest {
                 "Cannot find button to open article options",
                 5
         );
-
+        waitForMenuInit();
         waitForElementAndClick(
 //                By.xpath("//android.widget.LinearLayout[@index='2']"),
                 By.xpath("//*[contains(@text,'Add to reading list')]"),
                 "Cannot find option to add article to reading list",
-                8
+                5
         );
         waitForElementAndClick(
                 By.id("org.wikipedia:id/onboarding_button"),
@@ -230,6 +230,7 @@ public class FirstTest {
                 "Cannot find button to open article options",
                 5
         );
+        waitForMenuInit();
         waitForElementAndClick(
                 By.xpath("//android.widget.LinearLayout[@index='2']"),
                 "Cannot find option to add article to reading list",
@@ -250,7 +251,6 @@ public class FirstTest {
                 "Cannot find 'My lists' navigation button",
                 5
         );
-        System.out.println("//*[@text='" + name_of_folder + "']");
         try {Thread.sleep(10000);} catch (Exception e) {}
 
         waitForElementAndClick(
@@ -305,6 +305,10 @@ public class FirstTest {
                 By.id("org.wikipedia:id/view_page_title_text"),
                 "Title not found"
         );
+    }
+    @Test
+    public void testEx7rotate(){
+
     }
 
     @Test
@@ -649,11 +653,13 @@ public class FirstTest {
     return element;
     }
 
-    private WebElement waitForMenuInit(By by,long timeToWait){
-        WebDriverWait wait = new WebDriverWait(driver, timeToWait);
-        return wait.until(
-                ExpectedConditions.presenceOfElementLocated(by)
-        );
+    private void waitForMenuInit(){
+        waitForElementPresent(By.xpath("//*[@text='Change language']"),"Menu wasn't initialized");
+        waitForElementPresent(By.xpath("//*[@text='Share link']"),"Menu wasn't initialized");
+        waitForElementPresent(By.xpath("//*[@text='Add to reading list']"),"Menu wasn't initialized");
+        waitForElementPresent(By.xpath("//*[@text='Find in page']"),"Menu wasn't initialized");
+        waitForElementPresent(By.xpath("//*[@text='Similar pages']"),"Menu wasn't initialized");
+        waitForElementPresent(By.xpath("//*[@text='Font and theme']"),"Menu wasn't initialized");
     }
 
     private void swipeUp (int timeOfSwipe){
