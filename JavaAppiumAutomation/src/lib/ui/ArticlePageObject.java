@@ -13,12 +13,15 @@ public class ArticlePageObject extends MainPageObject{
         ADD_TO_MY_LIST_OVERLAY = "org.wikipedia:id/onboarding_button",
         MY_LIST_NAME_INPUT = "org.wikipedia:id/text_input",
         MY_LIST_OKAY_BUTTON = "//*[@text='OK']",
-        CLOSE_ARTICLE_BUTTON = "//android.widget.ImageButton[@content-desc='Navigate up']";
-
-
+        CLOSE_ARTICLE_BUTTON = "//android.widget.ImageButton[@content-desc='Navigate up']",
+        MY_LIST_FOLDER_BY_NAME_TPL = "//*[@text='{MY_LIST_FOLDER_NAME}']";
 
     public ArticlePageObject(AppiumDriver driver){
         super(driver);
+    }
+
+    private static String getMyListFolderXpathByName(String name_of_folder){
+        return MY_LIST_FOLDER_BY_NAME_TPL.replace("{MY_LIST_FOLDER_NAME}", name_of_folder);
     }
 
     public WebElement waitForTitleElement(){
@@ -28,6 +31,10 @@ public class ArticlePageObject extends MainPageObject{
     public String getArticleTitle(){
         WebElement title_element = waitForTitleElement();
         return title_element.getAttribute("text");
+    }
+
+    public void assertTitlePresent(){
+        this.assertElementPresent(By.id(TITLE),"Title not found");
     }
 
     public void swipeToFooter(){
@@ -88,5 +95,24 @@ public class ArticlePageObject extends MainPageObject{
         waitForElementPresent(By.xpath("//*[@text='Find in page']"),"Menu wasn't initialized");
         waitForElementPresent(By.xpath("//*[@text='Similar pages']"),"Menu wasn't initialized");
         waitForElementPresent(By.xpath("//*[@text='Font and theme']"),"Menu wasn't initialized");
+    }
+    public void addAnotherArticleToMyExistList(String name_of_folder){
+        this.waitForElementAndClick(
+                By.xpath(OPTIONS_BUTTON),
+                "Cannot find button to open article options",
+                5
+        );
+        this.waitForMenuInit();
+        this.waitForElementAndClick(
+                By.xpath(OPTIONS_ADD_TO_MY_LIST_BUTTON),
+                "Cannot find option to add article to reading list",
+                5
+        );
+        String my_list_folder_name_xpath = getMyListFolderXpathByName (name_of_folder);
+        this.waitForElementAndClick(
+                By.xpath(my_list_folder_name_xpath),
+                "Cannot find created list: '" + name_of_folder + "'",
+                5
+        );
     }
 }

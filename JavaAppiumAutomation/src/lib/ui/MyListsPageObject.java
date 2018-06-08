@@ -48,4 +48,12 @@ public class MyListsPageObject extends MainPageObject{
         String article_xpath = getSavedArticleXpathByTitile(article_title);
         this.waitForElementNotPresent(By.xpath(article_xpath), "Saved article still present with titile '" + article_title + "'",10);
     }
+    public void openArticleByName(String article_title){
+        String article_xpath = getSavedArticleXpathByTitile(article_title);
+        this.waitForElementAndClick(
+                By.xpath(article_xpath),
+                "Cannot open saved: '" + article_title + "'",
+                5
+        );
+    }
 }
