@@ -68,7 +68,6 @@ public class HomeWorkTests extends CoreTestCase {
         SearchPageObject SearchPageObject = new SearchPageObject(driver);
 
         SearchPageObject.initSearchInput();
-        SearchPageObject.waitForSearchInputInit();
         SearchPageObject.typeSearchLine("Korn");
         SearchPageObject.clickByArticleWithSubstring("American nu-metal band");
 
@@ -78,9 +77,7 @@ public class HomeWorkTests extends CoreTestCase {
         String name_of_folder = "Nu-metal bands";
         ArticlePageObject.addArticleToMyList(name_of_folder);
         ArticlePageObject.closeArticle();
-        try {Thread.sleep(5000);} catch (Exception e) {}
         SearchPageObject.initSearchInput();
-        SearchPageObject.waitForSearchInputInit();
         SearchPageObject.typeSearchLine("Linkin park");
         SearchPageObject.clickByArticleWithSubstring("American rock band");
         ArticlePageObject.waitForTitleElement();
@@ -95,7 +92,7 @@ public class HomeWorkTests extends CoreTestCase {
         try {Thread.sleep(5000);} catch (Exception e) {}
         MyListsPageObject.openFolderByName(name_of_folder);
         MyListsPageObject.swipeArticleToDelete(first_article_title);
-        MyListsPageObject.waitForArticleToApearByTtile(second_article_title);
+        MyListsPageObject.waitForArticleToAppearByTitle(second_article_title);
         MyListsPageObject.openArticleByName(second_article_title);
         ArticlePageObject.waitForTitleElement();
         String actual_article_title = ArticlePageObject.getArticleTitle();
@@ -107,11 +104,20 @@ public class HomeWorkTests extends CoreTestCase {
         SearchPageObject SearchPageObject = new SearchPageObject(driver);
 
         SearchPageObject.initSearchInput();
-        SearchPageObject.waitForSearchInputInit();
         SearchPageObject.typeSearchLine("Limp Bizkit");
         SearchPageObject.clickByArticleWithSubstring("American nu-metal band");
 
         ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
         ArticlePageObject.assertTitlePresent();
+    }
+    @Test
+    public void testEx9SearchWithTwoValues(){
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine("Linkin park");
+        SearchPageObject.clickByArticleWithTwoValues("Linkin park","American rock band");
+        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject.waitForTitleElement();
     }
 }

@@ -20,9 +20,11 @@ public class ArticlePageObject extends MainPageObject{
         super(driver);
     }
 
+    /*TEMPLATES METHODS */
     private static String getMyListFolderXpathByName(String name_of_folder){
         return MY_LIST_FOLDER_BY_NAME_TPL.replace("{MY_LIST_FOLDER_NAME}", name_of_folder);
     }
+    /*TEMPLATES METHODS */
 
     public WebElement waitForTitleElement(){
         return this.waitForElementPresent(By.id(TITLE),"Cannot find article title on page",5);
