@@ -116,8 +116,9 @@ public class HomeWorkTests extends CoreTestCase {
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Linkin park");
-        SearchPageObject.clickByArticleWithTwoValues("Linkin Park","American rock band");
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
-        ArticlePageObject.waitForTitleElement();
+        SearchPageObject.getAmountOfFoundArticles();
+        int amount_of_search_results = SearchPageObject.getAmountOfFoundArticles();
+        assertTrue("We found too few results!", amount_of_search_results >3);
+        SearchPageObject.waitForElementByTitleAndDescription("Linkin Park","American rock band");
     }
 }

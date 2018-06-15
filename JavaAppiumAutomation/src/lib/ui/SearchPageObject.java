@@ -56,9 +56,9 @@ public class SearchPageObject extends MainPageObject{
         String search_result_xpath = getResultSearchElement(substring);
         this.waitForElementAndClick(By.xpath(search_result_xpath),"Cannot find and click search result with substring '" + substring +"'",10);
     }
-    public void clickByArticleWithTwoValues(String title, String description){
+    public void waitForElementByTitleAndDescription(String title, String description){
         String search_result_with_two_values_xpath = getResultSearchElementWithToValues(title, description);
-        this.waitForElementAndClick(By.xpath(search_result_with_two_values_xpath),"Cannot find and click search result with title '" + title +"' with description '"+description+"'",10);
+        this.waitForElementPresent(By.xpath(search_result_with_two_values_xpath),"Cannot find search result with title '" + title +"' with description '"+description+"'",10);
     }
 
     public int getAmountOfFoundArticles(){

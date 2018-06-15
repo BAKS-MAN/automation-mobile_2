@@ -15,8 +15,8 @@
       <file leaf-file-name="HomeWorkTests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tests/HomeWorkTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1853">
-              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="570">
+              <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -24,8 +24,8 @@
       <file leaf-file-name="SearchTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/SearchTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="340">
+              <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="35" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,7 +60,7 @@
       <file leaf-file-name="MyListsPageObject.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/ui/MyListsPageObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="272">
               <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,8 +72,8 @@
       <file leaf-file-name="ArticlePageObject.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/ui/ArticlePageObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="35" column="5" selection-start-line="32" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="272">
+              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,8 +84,8 @@
       <file leaf-file-name="SearchPageObject.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/ui/SearchPageObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="59" column="108" selection-start-line="59" selection-start-column="108" selection-end-line="59" selection-end-column="108" />
+            <state relative-caret-position="204">
+              <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,8 +159,8 @@
         <option value="$PROJECT_DIR$/src/tests/ArticleTests.java" />
         <option value="$PROJECT_DIR$/src/lib/ui/ArticlePageObject.java" />
         <option value="$PROJECT_DIR$/src/lib/ui/MyListsPageObject.java" />
-        <option value="$PROJECT_DIR$/src/tests/HomeWorkTests.java" />
         <option value="$PROJECT_DIR$/src/lib/ui/SearchPageObject.java" />
+        <option value="$PROJECT_DIR$/src/tests/HomeWorkTests.java" />
       </list>
     </option>
   </component>
@@ -175,7 +175,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -217,7 +217,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,18 +428,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 14h 36m 37s.xml">
-      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 15h 15m 20s.xml">
-      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 15h 16m 36s.xml">
-      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 15h 17m 27s.xml">
-      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 15h 27m 54s.xml">
       <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
     </history-entry>
@@ -456,6 +444,18 @@
       <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
     </history-entry>
     <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 15h 53m 27s.xml">
+      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 16h 15m 54s.xml">
+      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 16h 16m 45s.xml">
+      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 16h 21m 52s.xml">
+      <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HomeWorkTests_testEx9SearchWithTwoValues - 2018.06.15 at 16h 23m 35s.xml">
       <configuration name="HomeWorkTests.testEx9SearchWithTwoValues" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -694,16 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/SearchTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/ArticleTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -714,10 +704,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/selenium-server-standalone-3.4.0.jar!/org/openqa/selenium/support/ui/FluentWait.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ui/ArticlePageObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="35" column="5" selection-start-line="32" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -726,18 +723,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ui/MyListsPageObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="272">
           <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/selenium-server-standalone-3.4.0.jar!/org/openqa/selenium/support/ui/FluentWait.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -753,8 +743,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/ui/SearchPageObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="59" column="108" selection-start-line="59" selection-start-column="108" selection-end-line="59" selection-end-column="108" />
+        <state relative-caret-position="204">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/SearchTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="33" column="8" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="35" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -763,8 +763,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/HomeWorkTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="570">
+          <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
         </state>
       </provider>
     </entry>
