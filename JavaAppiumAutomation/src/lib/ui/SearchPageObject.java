@@ -13,7 +13,7 @@ public class SearchPageObject extends MainPageObject{
             SEARCH_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']",
             SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text='No results found']",
             SEARCH_CLEAR_RESULTS = "org.wikipedia:id/search_results_list",
-            SEARCH_RESULT_WITH_TWO_VALUES_TPL = "//*[@resource-id = 'org.wikipedia:id/page_list_item_container']//*[contains(@text,'{TITLE}')][contains(@text,'{DESCRIPTION}')]";
+            SEARCH_RESULT_WITH_TWO_VALUES_TPL = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@resource-id='org.wikipedia:id/page_list_item_title'][contains(@text,'{TITLE}')]/../*[@resource-id='org.wikipedia:id/page_list_item_description'][@text='{DESCRIPTION}']/..";
 
     public SearchPageObject(AppiumDriver driver){
         super(driver);
@@ -58,7 +58,6 @@ public class SearchPageObject extends MainPageObject{
     }
     public void clickByArticleWithTwoValues(String title, String description){
         String search_result_with_two_values_xpath = getResultSearchElementWithToValues(title, description);
-        System.out.println(search_result_with_two_values_xpath);
         this.waitForElementAndClick(By.xpath(search_result_with_two_values_xpath),"Cannot find and click search result with title '" + title +"' with description '"+description+"'",10);
     }
 

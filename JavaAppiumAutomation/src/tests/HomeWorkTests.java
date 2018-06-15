@@ -116,7 +116,7 @@ public class HomeWorkTests extends CoreTestCase {
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Linkin park");
-        SearchPageObject.clickByArticleWithTwoValues("Linkin park","American rock band");
+        SearchPageObject.clickByArticleWithTwoValues("Linkin Park","American rock band");
         ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
         ArticlePageObject.waitForTitleElement();
     }
