@@ -1,7 +1,12 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.*;
+import lib.ui.factories.ArticlePageObjectFactory;
+import lib.ui.factories.MyListsPageObjectFactory;
+import lib.ui.factories.NavigationUIFactory;
+import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,16 +14,19 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class HomeWorkTests extends CoreTestCase {
+
+    private static final String name_of_folder = "Nu-metal bands";
+
     @Test
     public void testEx2Search(){
         MainPageObject MainPageObject = new MainPageObject(driver);
         MainPageObject.waitForElementAndClick(
-                By.xpath("//*[contains(@text,'Search Wikipedia')]"),
+                "xpath://*[contains(@text,'Search Wikipedia')]",
                 "Cannot find Search Wikipedia input",
                 5
         );
         WebElement search_element = MainPageObject.waitForElementPresent(
-                By.id("org.wikipedia:id/search_src_text"),
+                "id:org.wikipedia:id/search_src_text",
                 "Cannot find search input",
                 5
         );
@@ -31,7 +39,7 @@ public class HomeWorkTests extends CoreTestCase {
     }
     @Test
     public void testEx3CancelSearch() {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Linkin park");
@@ -45,7 +53,7 @@ public class HomeWorkTests extends CoreTestCase {
 
     @Test
     public void testEx4CheckSearch(){
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Android");
@@ -65,54 +73,58 @@ public class HomeWorkTests extends CoreTestCase {
     }
     @Test
     public void testEx5saveTwoArticlesToMyList(){
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Korn");
         SearchPageObject.clickByArticleWithSubstring("American nu-metal band");
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
-        ArticlePageObject.waitForTitleElement();
-        String first_article_title = ArticlePageObject.getArticleTitle();
-        String name_of_folder = "Nu-metal bands";
-        ArticlePageObject.addArticleToMyList(name_of_folder);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
+
+        if (Platform.getInstance().isAndroid()) {
+            ArticlePageObject.addArticleToMyList(name_of_folder);
+        } else {
+            ArticlePageObject.addArticlesToMySaved();
+        }
         ArticlePageObject.closeArticle();
+
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Linkin park");
         SearchPageObject.clickByArticleWithSubstring("American rock band");
-        ArticlePageObject.waitForTitleElement();
-        String second_article_title = ArticlePageObject.getArticleTitle();
-        ArticlePageObject.addAnotherArticleToMyExistList(name_of_folder);
+
+        if (Platform.getInstance().isAndroid()) {
+            ArticlePageObject.addAnotherArticleToMyExistList(name_of_folder);
+        } else {
+            ArticlePageObject.addArticlesToMySaved();
+        }
         ArticlePageObject.closeArticle();
 
-        NavigationUI NavigationUI = new NavigationUI(driver);
+        NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.clickMyLists();
 
-        MyListsPageObject MyListsPageObject = new MyListsPageObject (driver);
-        try {Thread.sleep(5000);} catch (Exception e) {}
-        MyListsPageObject.openFolderByName(name_of_folder);
-        MyListsPageObject.swipeArticleToDelete(first_article_title);
-        MyListsPageObject.waitForArticleToAppearByTitle(second_article_title);
-        MyListsPageObject.openArticleByName(second_article_title);
-        ArticlePageObject.waitForTitleElement();
-        String actual_article_title = ArticlePageObject.getArticleTitle();
-        assertEquals("We see unexpected article title!", second_article_title, actual_article_title);
-
+        MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
+        if (Platform.getInstance().isAndroid()) {
+            try {Thread.sleep(5000);} catch (Exception e) {}
+            MyListsPageObject.openFolderByName(name_of_folder);
+        }
+        String article_to_delete = MyListsPageObject.getArticleByIndex("1");
+        MyListsPageObject.swipeSpecificArticleToDelete(article_to_delete);
     }
+
     @Test
     public void testEx6AssertTitle(){
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Limp Bizkit");
         SearchPageObject.clickByArticleWithSubstring("American nu-metal band");
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.assertTitlePresent();
     }
     @Test
     public void testEx9SearchWithTwoValues(){
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Linkin park");
@@ -120,5 +132,6 @@ public class HomeWorkTests extends CoreTestCase {
         int amount_of_search_results = SearchPageObject.getAmountOfFoundArticles();
         assertTrue("We found too few results!", amount_of_search_results >3);
         SearchPageObject.waitForElementByTitleAndDescription("Linkin Park","American rock band");
+
     }
 }
